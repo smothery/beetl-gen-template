@@ -39,4 +39,4 @@ beetlsql:
 
 jasypt:
     encryptor:
-        password: monkeykingba
+        password: monkeykingbar
