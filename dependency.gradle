@@ -1,0 +1,52 @@
+ext.versions = [
+    springboot: '2.0.5.RELEASE',
+    springcloud: '1.4.0.RELEASE',
+    springframework: '5.0.9.RELEASE',
+    slf4j: '1.7.25',
+    fastjson: '1.2.51',
+    lombok: '1.18.2',
+    zipkin: '2.3.1',
+    aliyunlog: '0.6.17',
+    swagger2: '2.7.0',
+    junit: '4.12',
+    jsonpath: '2.4.0'
+]
+
+ext.libraries = [
+        "spring-cloud-starter-config": "org.springframework.cloud:spring-cloud-starter-config:${versions.springcloud}",
+        "spring-boot-starter-test": "org.springframework.boot:spring-boot-starter-test:${versions.springboot}",
+        "spring-boot-starter-web": "org.springframework.boot:spring-boot-starter-web:${versions.springboot}",
+        "spring-boot-starter-jdbc": "org.springframework.boot:spring-boot-starter-jdbc:${versions.springboot}",
+        "spring-boot-starter-webflux": "org.springframework.boot:spring-boot-starter-webflux:${versions.springboot}",
+        "spring-boot-starter": "org.springframework.boot:spring-boot-starter:${versions.springboot}",
+
+	    "spring-boot-starter-undertow": "org.springframework.boot:spring-boot-starter-undertow:${versions.springboot}",
+	    "spring-boot-starter-batch": "org.springframework.boot:spring-boot-starter-batch:${versions.springboot}",
+	    "spring-boot-starter-aop": "org.springframework.boot:spring-boot-starter-aop:${versions.springboot}",
+	    "spring-boot-starter-amqp": "org.springframework.boot:spring-boot-starter-amqp:${versions.springboot}",
+	    "spring-tx": "org.springframework:spring-tx:${versions.springframework}",
+	    "spring-web": "org.springframework:spring-web:${versions.springframework}",
+
+        "junit": "junit:junit:${versions.junit}",
+        "lombok": "org.projectlombok:lombok:${versions.lombok}",
+        "slf4j": "org.slf4j:slf4j-api:${versions.slf4j}",
+        "hutool": "cn.hutool:hutool-all:4.1.16",
+        "beetl": "com.ibeetl:beetl:2.9.3",
+        "beetlsql": "com.ibeetl:beetlsql:2.10.39",
+        "beetl-framework-starter": "com.ibeetl:beetl-framework-starter:1.1.67.RELEASE",
+        "druid": "com.alibaba:druid:1.1.11",
+        "druid-spring-boot-starter": "com.alibaba:druid-spring-boot-starter:1.1.10",
+        "mysql-connector": "mysql:mysql-connector-java:5.1.47",
+        "spring-data-redis": "org.springframework.data:spring-data-redis:2.0.10.RELEASE",
+        "lettuce-core": "io.lettuce:lettuce-core:5.0.5.RELEASE",
+        "easyopen": "net.oschina.durcframework:easyopen:1.12.0",
+        "easypoi-annotation": "cn.afterturn:easypoi-annotation:3.3.0",
+        "easypoi-base": "cn.afterturn:easypoi-base:3.3.0",
+        "easypoi": "cn.afterturn:easypoi:3.3.0",
+        "jasypt-spring-boot-starter": "com.github.ulisesbocchio:jasypt-spring-boot-starter:2.1.0",
+        "fastdfs-client-java": "net.oschina.zcx7878:fastdfs-client-java:1.27.0.0",
+        "im4java": "org.im4java:im4java:1.4.0",
+        "fastjson": "com.alibaba:fastjson:${versions.fastjson}",
+		"postgresql": "org.postgresql:postgresql:42.2.2",
+		"sentry-spring": "io.sentry:sentry-spring:1.7.10"
+]

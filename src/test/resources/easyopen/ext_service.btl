@@ -1,0 +1,16 @@
+package ${package};
+
+import java.util.List;
+
+public interface ${className} {
+
+        PageInfo<${entityClass}DTO> getPageList(${entityClass}ListRequestParams requestParams);
+
+        CreateResponseBody<Integer> create(${entityClass}CreateRequestParams requestParams);
+
+        ${entityClass}DTO detail(Integer id);
+
+        UpdateResponseBody update(${entityClass}UpdateRequestParams requestParams);
+
+        DeleteResponseBody delete(List<Integer> ids);
+}

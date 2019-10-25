@@ -1,0 +1,14 @@
+getListByPage
+===
+* 分页列表
+
+	select
+		 @pageTag(){
+             *
+         @}
+	from ${tableName}
+	@where(){
+	@}
+	@pageIgnoreTag(){
+        order by id
+    @}

@@ -1,0 +1,10 @@
+package ${package};
+
+import com.gitee.easyopen.doc.annotation.ApiDocField;
+import java.math.*;
+import java.util.Date;
+import java.sql.Timestamp;
+
+public class ${className} extends BasePageQueryRequestParams {
+
+}

@@ -1,0 +1,79 @@
+package ${package};
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.gitee.easyopen.exception.ApiException;
+import java.util.List;
+
+@Service
+public class ${className} implements ${serviceName} {
+
+        @Autowired
+        private ${daoName} ${daoNameField};
+
+        @Override
+        public PageInfo<${entityClass}DTO> getPageList(${entityClass}ListRequestParams requestParams){
+            PageQuery<${entityClass}DTO> pq = new PageQuery<>();
+            pq.setParas(requestParams);
+            pq.setPageNumber(requestParams.getPage());
+            pq.setPageSize(requestParams.getSize());
+
+            ${daoNameField}.getListByPage(pq);
+            PageInfo<${entityClass}DTO> info = new PageInfo<>(pq.getPageNumber(), pq.getPageSize());
+            info.setTotalRow(pq.getTotalRow());
+            info.setResult(pq.getList());
+            return info;
+        }
+
+        @Override
+        public CreateResponseBody<Integer> create(${entityClass}CreateRequestParams requestParams){
+            ${entityClass} entity = new ${entityClass}();
+            BeanUtils.copyProperties(requestParams, entity);
+            entity.setCreateAt(U.now());
+            entity.setLastUpdate(U.now());
+            ${daoNameField}.insertTemplate(entity, true);
+
+            CreateResponseBody<Integer> responseBody = new CreateResponseBody<>();
+            responseBody.setCreateAt(U.now());
+            responseBody.setId(entity.getId());
+            return responseBody;
+        }
+
+        @Override
+        public ${entityClass}DTO detail(Integer id){
+            ${entityClass} entity = ${daoNameField}.single(id);
+
+            if(entity == null){
+                throw new ApiException("无记录信息");
+            }
+
+            ${entityClass}DTO dto = new ${entityClass}DTO();
+            BeanUtils.copyProperties(entity, dto);
+            return dto;
+        }
+
+        @Override
+        public UpdateResponseBody update(${entityClass}UpdateRequestParams requestParams){
+            ${entityClass} entity = new ${entityClass}();
+            BeanFieldUtils.trimToNull(requestParams);
+            BeanUtils.copyProperties(requestParams, entity);
+            entity.setLastUpdate(U.now());
+            ${daoNameField}.updateTemplateById(entity);
+
+            UpdateResponseBody responseBody = new UpdateResponseBody();
+            responseBody.setUpdateAt(U.now());
+            return responseBody;
+        }
+
+        @Override
+        public DeleteResponseBody delete(List<Integer> ids){
+            for(Integer id : ids){
+                ${daoNameField}.deleteById(id);
+            }
+
+            DeleteResponseBody responseBody = new DeleteResponseBody();
+            responseBody.setDeleteAt(U.now());
+            return responseBody;
+        }
+}

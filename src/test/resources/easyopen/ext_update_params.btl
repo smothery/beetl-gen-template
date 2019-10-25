@@ -1,0 +1,28 @@
+package ${package};
+
+import com.gitee.easyopen.doc.annotation.ApiDocField;
+import java.math.*;
+import java.util.Date;
+import java.sql.Timestamp;
+
+public class ${className} {
+
+	<%for(attr in attrs){%>
+    @ApiDocField(description = "${attr.comment}")
+	private ${attr.type} ${attr.name} ;
+	<%}%>
+
+	public ${className}() {
+	}
+
+	<%for(attr in attrs){%>
+	public ${attr.type} get${attr.methodName}(){
+		return  ${attr.name};
+	}
+	public void set${attr.methodName}(${attr.type} ${attr.name} ){
+		this.${attr.name} = ${attr.name};
+	}
+
+	<%}%>
+
+}
