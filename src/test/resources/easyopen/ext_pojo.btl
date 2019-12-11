@@ -10,6 +10,9 @@ public class ${className} ${!isEmpty(ext)?"extends "+ext} ${implSerializable?"im
 	<%if(!isEmpty(attr.comment)){%>
     	// ${attr.comment}
     <%}%>
+    <%if(attr.type == "String" && attr.name == "id"){%>
+    @AssignID
+    <%}%>
 	private ${attr.type} ${attr.name} ;
 	<%}%>
 

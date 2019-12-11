@@ -19,7 +19,8 @@ public class ${className} {
         @ApiDocMethod(description = "${comment}列表"
                 , params = {
                         @ApiDocField(name = "keyword", description = "关键词"),
-                        @ApiDocField(name = "状态", description = "")
+                        @ApiDocField(name = "page", description = "第几页", required = true, example = "1"),
+                        @ApiDocField(name = "size", description = "每页几条数据", required = true, example = "10")
                 }
                 ,results = {
                         @ApiDocField(name = "page", description = "第几页", dataType = DataType.INT, example = "1"),

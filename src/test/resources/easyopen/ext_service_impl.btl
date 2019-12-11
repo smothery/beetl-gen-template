@@ -56,7 +56,6 @@ public class ${className} implements ${serviceName} {
         @Override
         public UpdateResponseBody update(${entityClass}UpdateRequestParams requestParams){
             ${entityClass} entity = new ${entityClass}();
-            BeanFieldUtils.trimToNull(requestParams);
             BeanUtils.copyProperties(requestParams, entity);
             entity.setLastUpdate(U.now());
             ${daoNameField}.updateTemplateById(entity);
