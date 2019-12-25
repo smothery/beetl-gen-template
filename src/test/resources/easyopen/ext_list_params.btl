@@ -6,5 +6,22 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 public class ${className} extends BasePageQueryRequestParams {
+    private Integer beginTime;
+    private Integer endTime;
 
+    public Integer getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(Integer beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public Integer getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
+    }
 }

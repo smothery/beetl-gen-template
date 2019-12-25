@@ -8,6 +8,9 @@ getListByPage
          @}
 	from ${tableName}
 	@where(){
+	    @if(!isEmpty(beginTime) && !isEmpty(endTime)){
+	        and create_at between #beginTime# and #endTime#
+	    @}
 	@}
 	@pageIgnoreTag(){
         order by create_at desc

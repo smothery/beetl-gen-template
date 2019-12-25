@@ -1,13 +1,24 @@
+app:
+    appId: test
+    appSecret: 123456
+    showDoc: true
+    docPassword:
+    limitPassword:
+
 server:
     port: 8080
 
 spring:
     # 数据库访问配置
     datasource:
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/mdb?useUnicode=true&characterEncoding=utf8&autoConnect=true&rewriteBatchedStatements=TRUE&allowMultiQueries=true&useSSL=false
-        username: ENC(qlHsL98xQYPgeZz2sP5SYw==)
-        password: ENC(9PiUhxwfrOCUjwGL86KrWHz2iGf/UTKl)
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/mdb
+        username: postgres
+        password: 123456
+#        driver-class-name: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/mdb?useUnicode=true&characterEncoding=utf8&autoConnect=true&rewriteBatchedStatements=TRUE&allowMultiQueries=true&useSSL=false
+#        username: root
+#        password: 123456
         # 初始化大小，最小，最大
         initial-size: 5
         min-idle: 5
@@ -30,13 +41,14 @@ spring:
         connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
 beetlsql:
-    basePackage: panzer.vor.generate.easyopen.repository
+    basePackage: panzer.vor.generate.easyopen
     daoSuffix: Dao
     sqlPath: /sql
     nameConversion: org.beetl.sql.core.UnderlinedNameConversion
-    dbStyle: org.beetl.sql.core.db.MySqlStyle
+#    dbStyle: org.beetl.sql.core.db.MySqlStyle
+    dbStyle: org.beetl.sql.core.db.PostgresStyle
     dev: true
 
-jasypt:
-    encryptor:
-        password: monkeykingbar
+#jasypt:
+#    encryptor:
+#        password: monkeykingbar

@@ -1,6 +1,8 @@
 package ${package};
 
 import com.gitee.easyopen.doc.annotation.ApiDocField;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import java.math.*;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -8,7 +10,18 @@ import java.sql.Timestamp;
 public class ${className} {
 
 	<%for(attr in attrs){%>
+	<%if(attr.isKey && attr.type == "String"){%>
+    @NotBlank(message = "记录id不能为空")
+    <%}%>
+	<%if(attr.isKey && attr.type != "String"){%>
+    @NotNull(message = "记录id不能为空")
+    <%}%>
+	<%if(attr.isKey){%>
+    @ApiDocField(description = "记录id", required = true)
+    <%}%>
+	<%if(!attr.isKey){%>
     @ApiDocField(description = "${attr.comment}")
+    <%}%>
 	private ${attr.type} ${attr.name} ;
 	<%}%>
 

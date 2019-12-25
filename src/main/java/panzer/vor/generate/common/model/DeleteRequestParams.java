@@ -13,7 +13,7 @@ import java.util.List;
 public class DeleteRequestParams<T> {
     @NotNull(message = "记录id列表不能为空")
     @Size(min = 1)
-    @ApiDocField(description = "记录id列表")
+    @ApiDocField(description = "记录id列表", required = true)
     private List<T> ids;
 
     public List<T> getIds() {

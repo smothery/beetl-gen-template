@@ -44,11 +44,11 @@ public final class PageInfo<X> {
         this.size = size;
         this.page = page;
 
-		/* 设置每页的记录数量,低于1时自动调整为DEFAULT_PAGE_SIZE */
+        /* 设置每页的记录数量,低于1时自动调整为DEFAULT_PAGE_SIZE */
         if (this.size < 1)
             this.size = DEFAULT_PAGE_SIZE;
 
-		/* 开始页面小于1自动调整到第1页 */
+        /* 开始页面小于1自动调整到第1页 */
         if (this.page < 1)
             this.page = FIRST_PAGE;
 

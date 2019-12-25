@@ -1,12 +1,14 @@
 package panzer.vor.generate;
 
 import org.beetl.sql.core.ClasspathLoader;
+import org.beetl.sql.core.SQLManager;
 import org.beetl.sql.core.db.MetadataManager;
 import org.beetl.sql.core.db.MySqlStyle;
 import org.beetl.sql.ext.gen.GenConfig;
 import org.beetl.sql.ext.gen.GenFilter;
 import org.beetl.sql.ext.gen.MapperCodeGen;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import panzer.vor.generate.base.BaseJUnit4SpringContextTests;
 import panzer.vor.generate.easyopen.*;
 
@@ -18,6 +20,9 @@ import java.util.Set;
  * @create 2018-10-12
  */
 public class GenerateTest extends BaseJUnit4SpringContextTests {
+    @Autowired
+    private SQLManager sqlManager;
+
     @Test
     public void easyopen_gen_one_console() throws Exception {
         String table = "salesorder_log";
@@ -43,7 +48,7 @@ public class GenerateTest extends BaseJUnit4SpringContextTests {
         config.codeGens.add(new CreateRequestParamsCodeGen(sqlManager));
         config.codeGens.add(new UpdateRequestParamsCodeGen(sqlManager));
 
-        ClasspathLoader loader = new ClasspathLoader("/all/sql/easyopen", new MySqlStyle());
+        ClasspathLoader loader = new ClasspathLoader("/sql", new MySqlStyle());
         sqlManager.setSqlLoader(loader);
         sqlManager.genALL("panzer.vor.generate.easyopen", config, new GenFilter() {
             @Override
@@ -89,6 +94,5 @@ public class GenerateTest extends BaseJUnit4SpringContextTests {
 
     @Test
     public void test_0() {
-
     }
 }

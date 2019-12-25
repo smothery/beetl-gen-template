@@ -73,7 +73,7 @@ repositories {
 dependencies {
     compile libraries.'spring-boot-starter-web' exclude module: "spring-boot-starter-tomcat"
     compile libraries.'spring-boot-starter-undertow'
-    compile libraries.'jasypt-spring-boot-starter'
+//    compile libraries.'jasypt-spring-boot-starter'
     compile libraries.'druid-spring-boot-starter'
     compile libraries.'slf4j'
     compile libraries.'hutool'

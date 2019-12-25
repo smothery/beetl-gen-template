@@ -8,14 +8,17 @@ import java.sql.Timestamp;
 public class ${className} {
 
 	<%for(attr in attrs){%>
+    <%if(!attr.isKey){%>
     @ApiDocField(description = "${attr.comment}")
-	private ${attr.type} ${attr.name} ;
+    private ${attr.type} ${attr.name} ;
+    <%}%>
 	<%}%>
 
 	public ${className}() {
 	}
 
 	<%for(attr in attrs){%>
+    <%if(!attr.isKey){%>
 	public ${attr.type} get${attr.methodName}(){
 		return  ${attr.name};
 	}
@@ -23,6 +26,7 @@ public class ${className} {
 		this.${attr.name} = ${attr.name};
 	}
 
+	<%}%>
 	<%}%>
 
 }

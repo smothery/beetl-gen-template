@@ -18,9 +18,11 @@ public class ${className} {
         @Api(name = "${apiName}list", version = ApiInfo.API_VERSION)
         @ApiDocMethod(description = "${comment}列表"
                 , params = {
-                        @ApiDocField(name = "keyword", description = "关键词"),
+                        @ApiDocField(name = "keyword", description = "关键词,订单号/手机号/姓名"),
                         @ApiDocField(name = "page", description = "第几页", required = true, example = "1"),
-                        @ApiDocField(name = "size", description = "每页几条数据", required = true, example = "10")
+                        @ApiDocField(name = "size", description = "每页几条数据", required = true, example = "10"),
+                        @ApiDocField(name = "beginTime", description = "开始时间 10位的时间戳"),
+                        @ApiDocField(name = "endTime", description = "结束时间 10位的时间戳")
                 }
                 ,results = {
                         @ApiDocField(name = "page", description = "第几页", dataType = DataType.INT, example = "1"),
@@ -35,25 +37,25 @@ public class ${className} {
         }
 
         @Api(name = "${apiName}create", version = ApiInfo.API_VERSION)
-        @ApiDocMethod(description = "添加${comment}")
+        @ApiDocMethod(description = "添加")
         public CreateResponseBody<Integer> create(${entityClass}CreateRequestParams requestParams){
             return ${serviceNameField}.create(requestParams);
         }
 
         @Api(name = "${apiName}detail", version = ApiInfo.API_VERSION)
-        @ApiDocMethod(description = "${comment}详情")
-        public ${entityClass}DTO detail(@NotNull(message = "id不能为空") Integer id){
+        @ApiDocMethod(description = "详情", params = {@ApiDocField(name = "id", description = "记录id", required = true)})
+        public ${entityClass}DTO detail(@NotNull(message = "记录id不能为空") Integer id){
             return ${serviceNameField}.detail(id);
         }
 
         @Api(name = "${apiName}update", version = ApiInfo.API_VERSION)
-        @ApiDocMethod(description = "修改${comment}")
+        @ApiDocMethod(description = "修改")
         public UpdateResponseBody update(${entityClass}UpdateRequestParams requestParams){
             return ${serviceNameField}.update(requestParams);
         }
 
         @Api(name = "${apiName}delete", version = ApiInfo.API_VERSION)
-        @ApiDocMethod(description = "删除${comment}")
+        @ApiDocMethod(description = "删除")
         public DeleteResponseBody delete(DeleteRequestParams<Integer> requestParams){
             return ${serviceNameField}.delete(requestParams.getIds());
         }

@@ -19,6 +19,13 @@ public class ${className} implements ${serviceName} {
             pq.setPageNumber(requestParams.getPage());
             pq.setPageSize(requestParams.getSize());
 
+            int oneDay = (24 * 60 * 60) - 1; // 截至23:59:59
+
+            if (!(requestParams.getBeginTime() == null || requestParams.getEndTime() == null)) {
+                requestParams.setBeginTime(requestParams.getBeginTime());
+                requestParams.setEndTime((requestParams.getEndTime() + oneDay));
+            }
+
             ${daoNameField}.getListByPage(pq);
             PageInfo<${entityClass}DTO> info = new PageInfo<>(pq.getPageNumber(), pq.getPageSize());
             info.setTotalRow(pq.getTotalRow());
@@ -31,7 +38,7 @@ public class ${className} implements ${serviceName} {
             ${entityClass} entity = new ${entityClass}();
             BeanUtils.copyProperties(requestParams, entity);
             entity.setCreateAt(U.now());
-            entity.setLastUpdate(U.now());
+            // entity.setLastUpdate(U.now());
             ${daoNameField}.insertTemplate(entity, true);
 
             CreateResponseBody<Integer> responseBody = new CreateResponseBody<>();
@@ -57,7 +64,7 @@ public class ${className} implements ${serviceName} {
         public UpdateResponseBody update(${entityClass}UpdateRequestParams requestParams){
             ${entityClass} entity = new ${entityClass}();
             BeanUtils.copyProperties(requestParams, entity);
-            entity.setLastUpdate(U.now());
+            // entity.setLastUpdate(U.now());
             ${daoNameField}.updateTemplateById(entity);
 
             UpdateResponseBody responseBody = new UpdateResponseBody();
@@ -67,12 +74,15 @@ public class ${className} implements ${serviceName} {
 
         @Override
         public DeleteResponseBody delete(List<Integer> ids){
-            for(Integer id : ids){
-                ${daoNameField}.deleteById(id);
-            }
+            // ${entityClass} entity = new ${entityClass}();
+            // for(Integer id : ids){
+            //     entity.setIsDel(1);
+            //     entity.setDeleteAt(U.now());
+            //     ${daoNameField}.updateTemplateById(id);
+            // }
 
             DeleteResponseBody responseBody = new DeleteResponseBody();
-            responseBody.setDeleteAt(U.now());
+            // responseBody.setDeleteAt(U.now());
             return responseBody;
         }
 }

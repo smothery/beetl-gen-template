@@ -6,6 +6,7 @@ target/
 classes/
 out/
 logs/
+*.sh
 
 # Compiled class file
 *.class

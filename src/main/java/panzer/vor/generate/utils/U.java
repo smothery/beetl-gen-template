@@ -73,8 +73,12 @@ public class U {
         return isEmpty(source) ? target : source;
     }
 
-    public static String uuid(){
-        return UUID.randomUUID().toString().replaceAll("-","");
+    public static String uuid() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
+    }
+
+    public static int now() {
+        return (int) (System.currentTimeMillis() / 1000);
     }
 
 }
