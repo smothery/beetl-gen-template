@@ -34,6 +34,8 @@ public void easyopen_gen_all() throws Exception {
 |  |-- main
 |  |    |-- java
 |  |    |   |-- panzer.vor.generate.easyopen // 生成的Java代码
+|  |    |-- resources
+|  |    |   |-- sql // 生成的sql文件
 |  |-- test
 |  |    |-- java
 |  |    |   |-- panzer.vor.generate.easyopen // 代码生成具体实现，与模板一一对应
