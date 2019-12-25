@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import panzer.vor.generate.base.BaseJUnit4SpringContextTests;
 import panzer.vor.generate.easyopen.*;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -48,6 +49,8 @@ public class GenerateTest extends BaseJUnit4SpringContextTests {
         config.codeGens.add(new CreateRequestParamsCodeGen(sqlManager));
         config.codeGens.add(new UpdateRequestParamsCodeGen(sqlManager));
 
+        File sqlPath = new File(System.getProperty("user.dir") + "/src/main/resources/sql/");
+        if (!sqlPath.exists()) sqlPath.mkdirs();
         ClasspathLoader loader = new ClasspathLoader("/sql", new MySqlStyle());
         sqlManager.setSqlLoader(loader);
         sqlManager.genALL("panzer.vor.generate.easyopen", config, new GenFilter() {
