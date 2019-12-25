@@ -1,5 +1,5 @@
 # beetl-gen-template
-基于beetlsql 快速生成controller,service,serviceImpl,方法出入参数实体,entity,sql
+基于beetlsql 快速生成controller,service,serviceImpl,方法出入参数实体,dao,entity,sql
 
 
 目前只定义了easyopen的模板，去掉easyopen的注释也可以适用普通的mvc。
