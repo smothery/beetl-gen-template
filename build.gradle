@@ -86,3 +86,9 @@ dependencies {
 
     testCompile libraries.'spring-boot-starter-test'
 }
+
+task makePretty(type: Delete) {
+    delete 'src\\main\\resources\\sql', 'src\\main\\java\\panzer\\vor\\generate\\easyopen'
+    followSymlinks = true
+}
+
